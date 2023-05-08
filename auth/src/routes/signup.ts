@@ -29,6 +29,8 @@ router.post('/api/users/signup', [
         const user = User.build({email, password});
         await user.save();
 
+        //Run the following command to create an env for JWT secret in Kubernetes: 
+        // kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
         //Generate JWT
         const userJwt = jwt.sign({
             id: user.id,
