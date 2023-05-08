@@ -35,7 +35,8 @@ router.post('/api/users/signup', [
         const userJwt = jwt.sign({
             id: user.id,
             email: user.email
-        }, 'ssddff');
+        }, process.env.JWT_KEY!
+        );
 
         //Store it on a session token
         req.session = {
